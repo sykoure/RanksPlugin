@@ -35,9 +35,6 @@ public class CheckRanksGui {
             .add(Keys.DYE_COLOR, WHITE).build());
 
     public static void openCheckRanksGUI(Player sender) {
-
-        //TODO GERER LES ECHANGE BDD
-
         View view = View.builder()
                 .archetype(InventoryArchetypes.ENCHANTING_TABLE)
                 .property(InventoryTitle.of(Text.of("&8" + sender.getName() + "'s ranks")))
@@ -49,8 +46,6 @@ public class CheckRanksGui {
     }
 
     public static void constructGUI(Player player, View view, int page) {
-        int line = 1;
-        int column = 1;
 
 
         //Number of pages
