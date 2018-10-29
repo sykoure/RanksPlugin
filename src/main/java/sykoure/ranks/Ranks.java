@@ -1,16 +1,16 @@
 package sykoure.ranks;
 
 import com.google.inject.Inject;
-import org.slf4j.Logger;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandManager;
 import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandSpec;
-import org.spongepowered.api.entity.living.player.Player;
+import org.spongepowered.api.plugin.PluginContainer;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Text;
+import sykoure.ranks.commands.AdvancementProgress;
 import sykoure.ranks.commands.CheckRanks;
 
 @Plugin(
@@ -23,31 +23,38 @@ import sykoure.ranks.commands.CheckRanks;
 )
 public class Ranks {
 
-        //AdvancementProgress
+
+    private static Ranks instance;
+    //AdvancementProgress
     //Player player = new Player();
 
 
     @Inject
-    private Logger logger;
+    private PluginContainer container;
+
+
+    //Useful to create views
+    public static Ranks getInstance() {
+        return instance;
+    }
+
+    public PluginContainer getContainer(){
+        return this.container;
+    }
 
     @Listener
     public void onServerStart(GameStartedServerEvent event) {
 
         CommandManager commandManager = Sponge.getCommandManager();
-        /**CommandSpec gymWarpSpec = CommandSpec.builder()
+
+        CommandSpec pokedex = CommandSpec.builder()
                 .description(Text.of("Warps you to the specified gym location."))
-                .permission("agp.command.gymwarp")
-                .executor(new Help())
+                .executor(new AdvancementProgress())
                 .arguments(
-                        GenericArguments.onlyOne(GymCommandElement.gym()),
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("location"))),
-                        GenericArguments.optional(GenericArguments.seq(
-                                GenericArguments.optional(GymArenaCommandElement.gymArena()),
-                                GenericArguments.optional(GenericArguments.string(Text.of("arenaSubLocation")))
-                        ))
+                        GenericArguments.onlyOne(GenericArguments.playerOrSource(Text.of("target")))
                 )
                 .build();
-        commandManager.register(this, gymWarpSpec, "rank");**/
+        commandManager.register(this, pokedex, "pokedex");
 
         CommandSpec checkRanks = CommandSpec.builder()
                 .description(Text.of("Checks your ranks"))
@@ -56,7 +63,7 @@ public class Ranks {
                         GenericArguments.onlyOne(GenericArguments.playerOrSource(Text.of("target")))
                 )
                 .build();
-        commandManager.register(this, checkRanks, "checkranks", "cb", "ranks");
+        commandManager.register(this, checkRanks, "checkranks", "ranks");
 
     }
 }
