@@ -1,0 +1,30 @@
+plugins {
+    id 'org.spongepowered.plugin' version '0.8.1'
+}
+
+group = pluginGroup
+version = pluginVersion
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        name = "Sponge"
+        url = "http://repo.spongepowered.org/maven"
+    }
+    maven {
+        name = "Forge"
+        url = "http://files.minecraftforge.net/maven"
+    }
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {	dependencies {
+    compile "com.github.SimonFlash.TeslaPowered:TeslaLibs:v1.1.5"
+}
+    compile 'org.spongepowered:spongeapi:7.0.0'
+}
+
+sponge.plugin.id = pluginId
