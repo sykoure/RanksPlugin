@@ -48,18 +48,17 @@ public class CheckRanksGui {
         constructGUI(sender,view,0);
     }
 
-    public static void constructGUI(Player player, View view, int page){
+    public static void constructGUI(Player player, View view, int page) {
         int line = 1;
         int column = 1;
-
 
 
         //Number of pages
         int maxPages = 2;
 
-        if(page < 0)
+        if (page < 0)
             page = 0;
-        if(page >=maxPages)
+        if (page >= maxPages)
             page = maxPages;
 
         //Render the new layout
@@ -71,21 +70,8 @@ public class CheckRanksGui {
                 .row(WHITEGLASSELEMENT, 4)
                 .row(WHITEGLASSELEMENT, 5)
                 .build();
-            view.define(layout);
+        view.define(layout);
 
-            int slotsDone = 0;
-            for (int i = page * itemsPerPage; i < badgeData.size(); i++)
-        {
-            if (slotsDone == itemsPerPage)
-            {
-                break;
-            }
-
-            int currentRow = slotsDone / itemsPerRow;
-            int currentSlot = slotsDone % itemsPerRow;
-            int slot = (startOnLine * 9) + (currentRow * 9) + rowStart + currentSlot;
-
-            view.setElement(slot, getBadgeElement(player, badgeData.get(i)));
-            slotsDone++;
         }
+    }
 }

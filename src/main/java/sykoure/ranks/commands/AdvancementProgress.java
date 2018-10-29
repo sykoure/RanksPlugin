@@ -21,6 +21,6 @@ public class AdvancementProgress implements CommandExecutor {
         }
 
         Player sender = (Player) src;
-        TrainerData trai
+        return CommandResult.success();
     }
 }
