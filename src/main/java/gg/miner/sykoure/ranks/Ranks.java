@@ -44,6 +44,7 @@ public class Ranks {
 
     @Listener
     public void onServerStart(GameStartedServerEvent event) {
+        instance = this;
 
         CommandManager commandManager = Sponge.getCommandManager();
 
