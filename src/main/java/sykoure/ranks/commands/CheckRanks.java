@@ -12,20 +12,20 @@ import sykoure.ranks.gui.CheckRanksGui;
 
 public class CheckRanks implements CommandExecutor {
     @Override
-    public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
-        if(!(src instanceof Player)){
-            src.sendMessage((Text.of(TextColors.DARK_RED,"ERROR, this command can only be used by a player")));
+    public CommandResult execute(CommandSource src, CommandContext args) {
+        if (!(src instanceof Player)) {
+            src.sendMessage((Text.of(TextColors.DARK_RED, "ERROR, this command can only be used by a player")));
+            return CommandResult.empty();
         }
 
         Player sender = (Player) src;
         Player target = args.<Player>getOne("target").get();
 
-        if(target == src){
-            //When a player is checking his proper ranks
+        if (target.equals(src)) {
+            //When a player is checking his own ranks
             CheckRanksGui.openCheckRanksGUI(sender);
-        }
-        else{
-            src.sendMessage(Text.of(TextColors.DARK_RED,"ERROR, You can't check the rank GUI of other players"));
+        } else {
+            src.sendMessage(Text.of(TextColors.DARK_RED, "ERROR, You can't check the rank GUI of other players"));
         }
 
         return CommandResult.success();

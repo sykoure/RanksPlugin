@@ -1,9 +1,5 @@
 package sykoure.ranks.commands;
 
-import com.pixelmonmod.pixelmon.entities.npcs.registry.BaseTrainer;
-import com.pixelmonmod.pixelmon.entities.npcs.registry.TrainerData;
-import com.pixelmonmod.pixelmon.entities.pixelmon.EntityPixelmon;
-import com.pixelmonmod.pixelmon.storage.playerData.PlayerData;
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.CommandSource;
@@ -15,7 +11,7 @@ public class AdvancementProgress implements CommandExecutor {
 
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
-        if(!(src instanceof Player)){
+        if (!(src instanceof Player)) {
             Player target = args.<Player>getOne("target").get();
 
         }

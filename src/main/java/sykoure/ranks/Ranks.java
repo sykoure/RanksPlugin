@@ -5,10 +5,10 @@ import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandManager;
 import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandSpec;
-import org.spongepowered.api.plugin.PluginContainer;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Plugin;
+import org.spongepowered.api.plugin.PluginContainer;
 import org.spongepowered.api.text.Text;
 import sykoure.ranks.commands.AdvancementProgress;
 import sykoure.ranks.commands.CheckRanks;
@@ -38,12 +38,13 @@ public class Ranks {
         return instance;
     }
 
-    public PluginContainer getContainer(){
+    public PluginContainer getContainer() {
         return this.container;
     }
 
     @Listener
     public void onServerStart(GameStartedServerEvent event) {
+        instance = this;
 
         CommandManager commandManager = Sponge.getCommandManager();
 
