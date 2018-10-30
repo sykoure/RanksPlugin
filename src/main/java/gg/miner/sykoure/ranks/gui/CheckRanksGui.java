@@ -1,18 +1,16 @@
-package sykoure.ranks.gui;
+package gg.miner.sykoure.ranks.gui;
 
+import com.mcsimonflash.sponge.teslalibs.inventory.Element;
 import com.mcsimonflash.sponge.teslalibs.inventory.Layout;
 import com.mcsimonflash.sponge.teslalibs.inventory.View;
 import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.entity.living.player.Player;
-
-import com.mcsimonflash.sponge.teslalibs.inventory.Element;
-
 import org.spongepowered.api.item.ItemTypes;
 import org.spongepowered.api.item.inventory.InventoryArchetypes;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.item.inventory.property.InventoryTitle;
 import org.spongepowered.api.text.Text;
-import sykoure.ranks.Ranks;
+import gg.miner.sykoure.ranks.Ranks;
 
 import static org.spongepowered.api.data.type.DyeColors.*;
 
@@ -42,7 +40,7 @@ public class CheckRanksGui {
 
         view.open(sender);
 
-        constructGUI(sender,view,0);
+        constructGUI(sender, view, 0);
     }
 
     public static void constructGUI(Player player, View view, int page) {
@@ -67,6 +65,5 @@ public class CheckRanksGui {
                 .build();
         view.define(layout);
 
-        }
     }
 }
