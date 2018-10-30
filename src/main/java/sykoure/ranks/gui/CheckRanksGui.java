@@ -54,6 +54,13 @@ public class CheckRanksGui {
         constructGUI(sender, view, 0);
     }
 
+    public static View viewBuilder(String playerName, int curPage, int totalPage) {
+        return View.builder()
+                .archetype(InventoryArchetypes.DOUBLE_CHEST)
+                .property(InventoryTitle.of(Text.of(playerName + "'s ranks - Page " + curPage + " / " + totalPage)))
+                .build(Ranks.getInstance().getContainer());
+    }
+
     public static void constructGUI(Player player, View view, int page) {
 
 
@@ -98,14 +105,17 @@ public class CheckRanksGui {
 
         ItemStack prevStack = ItemStack.of(Sponge.getRegistry().getType(ItemType.class, "pixelmon:trade_holder_left").get(), 1);
         prevStack.offer(Keys.DISPLAY_NAME, Text.of("Previous"));
-        Consumer<Action.Click> prevAction = click -> Task.builder().execute(task -> constructGUI(player, view, finalPage - 1)).submit(Ranks.getInstance());
+        Consumer<Action.Click> prevAction = click -> Task.builder().execute(task -> constructGUI(player, view, finalPage - 1)
+        ).submit(Ranks.getInstance());
 
         ItemStack backStack = ItemStack.of(Sponge.getRegistry().getType(ItemType.class, "pixelmon:trade_monitor").get(), 1);
         backStack.offer(Keys.DISPLAY_NAME, Text.EMPTY);
+        Consumer<Action.Click> midAction = click -> Task.builder().execute(task -> player.sendMessage(Text.of("Gros con"))).submit(Ranks.getInstance());
+
 
         Element prev = Element.of(prevStack, prevAction);
         Element next = Element.of(nextStack, nextAction);
-        Element mehh = Element.of(backStack);
+        Element mehh = Element.of(backStack, midAction);
 
         view.setElement(48, prev);
         view.setElement(49, mehh);
