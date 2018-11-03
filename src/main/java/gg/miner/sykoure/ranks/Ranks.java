@@ -18,8 +18,10 @@ import org.spongepowered.api.text.Text;
         name = "Ranks",
         description = "Allowing the server to create new ranks ",
         authors = {
-                "Sykoure"
-        }
+                "Sykoure",
+                "AlcaTorda"
+        },
+        version = "1.0"
 )
 public class Ranks {
 

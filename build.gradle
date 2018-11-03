@@ -49,8 +49,8 @@ minecraft {
 }
 
 dependencies {
-    // compile "com.github.SimonFlash.TeslaPowered:TeslaLibs:v1.1.5"
     compile "org.spongepowered:spongeapi:7.0.0"
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
     implementation "com.github.SimonFlash.TeslaPowered:TeslaLibs:v1.1.5"
 
 }

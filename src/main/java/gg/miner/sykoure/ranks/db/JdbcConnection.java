@@ -8,7 +8,7 @@ public class JdbcConnection {
     private static String base = "miner_ranks";
     private static String user = "root";
     private static String password = "";
-    private static String url = "jdbc:mysql://" + host + "/" + base;
+    private static String url = "jdbc:mysql://" + host + "/" + base + "?serverTimezone=CET";
 
     private static Connection connection;
 
